@@ -57,11 +57,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 public class Result {
 
     /**
-     * The stable, unique identifier of the rule, if any, to which this notification is relevant. This member can be used to retrieve rule metadata from the rules dictionary, if it exists.
+     * The stable, unique identifier of the rule, if any, to which this result is relevant.
      * 
      */
     @JsonProperty("ruleId")
-    @JsonPropertyDescription("The stable, unique identifier of the rule, if any, to which this notification is relevant. This member can be used to retrieve rule metadata from the rules dictionary, if it exists.")
+    @JsonPropertyDescription("The stable, unique identifier of the rule, if any, to which this result is relevant.")
     private String ruleId;
     /**
      * The index within the tool component rules array of the rule object associated with this result.
@@ -278,7 +278,7 @@ public class Result {
     private PropertyBag properties;
 
     /**
-     * The stable, unique identifier of the rule, if any, to which this notification is relevant. This member can be used to retrieve rule metadata from the rules dictionary, if it exists.
+     * The stable, unique identifier of the rule, if any, to which this result is relevant.
      * 
      */
     @JsonProperty("ruleId")
@@ -287,7 +287,7 @@ public class Result {
     }
 
     /**
-     * The stable, unique identifier of the rule, if any, to which this notification is relevant. This member can be used to retrieve rule metadata from the rules dictionary, if it exists.
+     * The stable, unique identifier of the rule, if any, to which this result is relevant.
      * 
      */
     @JsonProperty("ruleId")

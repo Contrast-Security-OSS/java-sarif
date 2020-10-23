@@ -1,7 +1,8 @@
 # Java SARIF
 
 Contains POJOs generated from the [Static Analysis Results Interchange Format 
-(SARIF)](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) JSON schema.
+](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) (SARIF) 
+[JSON schema](https://github.com/oasis-tcs/sarif-spec/blob/master/Schemata/sarif-schema-2.1.0.json).
 
 It uses Jackson for serialising/deserialing from JSON.
 

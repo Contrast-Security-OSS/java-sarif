@@ -71,18 +71,18 @@ public class Invocation {
     @JsonPropertyDescription("The locations of any response files specified on the tool's command line.")
     private Set<ArtifactLocation> responseFiles = new LinkedHashSet<ArtifactLocation>();
     /**
-     * The Coordinated Universal Time (UTC) date and time at which the run started. See "Date/time properties" in the SARIF spec for the required format.
+     * The Coordinated Universal Time (UTC) date and time at which the invocation started. See "Date/time properties" in the SARIF spec for the required format.
      * 
      */
     @JsonProperty("startTimeUtc")
-    @JsonPropertyDescription("The Coordinated Universal Time (UTC) date and time at which the run started. See \"Date/time properties\" in the SARIF spec for the required format.")
+    @JsonPropertyDescription("The Coordinated Universal Time (UTC) date and time at which the invocation started. See \"Date/time properties\" in the SARIF spec for the required format.")
     private Date startTimeUtc;
     /**
-     * The Coordinated Universal Time (UTC) date and time at which the run ended. See "Date/time properties" in the SARIF spec for the required format.
+     * The Coordinated Universal Time (UTC) date and time at which the invocation ended. See "Date/time properties" in the SARIF spec for the required format.
      * 
      */
     @JsonProperty("endTimeUtc")
-    @JsonPropertyDescription("The Coordinated Universal Time (UTC) date and time at which the run ended. See \"Date/time properties\" in the SARIF spec for the required format.")
+    @JsonPropertyDescription("The Coordinated Universal Time (UTC) date and time at which the invocation ended. See \"Date/time properties\" in the SARIF spec for the required format.")
     private Date endTimeUtc;
     /**
      * The process exit code.
@@ -158,25 +158,25 @@ public class Invocation {
     @JsonPropertyDescription("Specifies whether the tool's execution completed successfully.")
     private Boolean executionSuccessful;
     /**
-     * The machine that hosted the analysis tool run.
+     * The machine on which the invocation occurred.
      * 
      */
     @JsonProperty("machine")
-    @JsonPropertyDescription("The machine that hosted the analysis tool run.")
+    @JsonPropertyDescription("The machine on which the invocation occurred.")
     private String machine;
     /**
-     * The account that ran the analysis tool.
+     * The account under which the invocation occurred.
      * 
      */
     @JsonProperty("account")
-    @JsonPropertyDescription("The account that ran the analysis tool.")
+    @JsonPropertyDescription("The account under which the invocation occurred.")
     private String account;
     /**
-     * The process id for the analysis tool run.
+     * The id of the process in which the invocation occurred.
      * 
      */
     @JsonProperty("processId")
-    @JsonPropertyDescription("The process id for the analysis tool run.")
+    @JsonPropertyDescription("The id of the process in which the invocation occurred.")
     private Integer processId;
     /**
      * Specifies the location of an artifact.
@@ -305,7 +305,7 @@ public class Invocation {
     }
 
     /**
-     * The Coordinated Universal Time (UTC) date and time at which the run started. See "Date/time properties" in the SARIF spec for the required format.
+     * The Coordinated Universal Time (UTC) date and time at which the invocation started. See "Date/time properties" in the SARIF spec for the required format.
      * 
      */
     @JsonProperty("startTimeUtc")
@@ -314,7 +314,7 @@ public class Invocation {
     }
 
     /**
-     * The Coordinated Universal Time (UTC) date and time at which the run started. See "Date/time properties" in the SARIF spec for the required format.
+     * The Coordinated Universal Time (UTC) date and time at which the invocation started. See "Date/time properties" in the SARIF spec for the required format.
      * 
      */
     @JsonProperty("startTimeUtc")
@@ -328,7 +328,7 @@ public class Invocation {
     }
 
     /**
-     * The Coordinated Universal Time (UTC) date and time at which the run ended. See "Date/time properties" in the SARIF spec for the required format.
+     * The Coordinated Universal Time (UTC) date and time at which the invocation ended. See "Date/time properties" in the SARIF spec for the required format.
      * 
      */
     @JsonProperty("endTimeUtc")
@@ -337,7 +337,7 @@ public class Invocation {
     }
 
     /**
-     * The Coordinated Universal Time (UTC) date and time at which the run ended. See "Date/time properties" in the SARIF spec for the required format.
+     * The Coordinated Universal Time (UTC) date and time at which the invocation ended. See "Date/time properties" in the SARIF spec for the required format.
      * 
      */
     @JsonProperty("endTimeUtc")
@@ -583,7 +583,7 @@ public class Invocation {
     }
 
     /**
-     * The machine that hosted the analysis tool run.
+     * The machine on which the invocation occurred.
      * 
      */
     @JsonProperty("machine")
@@ -592,7 +592,7 @@ public class Invocation {
     }
 
     /**
-     * The machine that hosted the analysis tool run.
+     * The machine on which the invocation occurred.
      * 
      */
     @JsonProperty("machine")
@@ -606,7 +606,7 @@ public class Invocation {
     }
 
     /**
-     * The account that ran the analysis tool.
+     * The account under which the invocation occurred.
      * 
      */
     @JsonProperty("account")
@@ -615,7 +615,7 @@ public class Invocation {
     }
 
     /**
-     * The account that ran the analysis tool.
+     * The account under which the invocation occurred.
      * 
      */
     @JsonProperty("account")
@@ -629,7 +629,7 @@ public class Invocation {
     }
 
     /**
-     * The process id for the analysis tool run.
+     * The id of the process in which the invocation occurred.
      * 
      */
     @JsonProperty("processId")
@@ -638,7 +638,7 @@ public class Invocation {
     }
 
     /**
-     * The process id for the analysis tool run.
+     * The id of the process in which the invocation occurred.
      * 
      */
     @JsonProperty("processId")

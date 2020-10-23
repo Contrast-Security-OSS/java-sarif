@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonPropertyOrder({
     "guid",
     "kind",
-    "state",
+    "status",
     "justification",
     "location",
     "properties"
@@ -42,12 +42,12 @@ public class Suppression {
     @JsonPropertyDescription("A string that indicates where the suppression is persisted.")
     private Suppression.Kind kind;
     /**
-     * A string that indicates the state of the suppression.
+     * A string that indicates the review status of the suppression.
      * 
      */
-    @JsonProperty("state")
-    @JsonPropertyDescription("A string that indicates the state of the suppression.")
-    private Suppression.State state;
+    @JsonProperty("status")
+    @JsonPropertyDescription("A string that indicates the review status of the suppression.")
+    private Suppression.Status status;
     /**
      * A string representing the justification for the suppression.
      * 
@@ -119,25 +119,25 @@ public class Suppression {
     }
 
     /**
-     * A string that indicates the state of the suppression.
+     * A string that indicates the review status of the suppression.
      * 
      */
-    @JsonProperty("state")
-    public Suppression.State getState() {
-        return state;
+    @JsonProperty("status")
+    public Suppression.Status getStatus() {
+        return status;
     }
 
     /**
-     * A string that indicates the state of the suppression.
+     * A string that indicates the review status of the suppression.
      * 
      */
-    @JsonProperty("state")
-    public void setState(Suppression.State state) {
-        this.state = state;
+    @JsonProperty("status")
+    public void setStatus(Suppression.Status status) {
+        this.status = status;
     }
 
-    public Suppression withState(Suppression.State state) {
-        this.state = state;
+    public Suppression withStatus(Suppression.Status status) {
+        this.status = status;
         return this;
     }
 
@@ -222,9 +222,9 @@ public class Suppression {
         sb.append('=');
         sb.append(((this.kind == null)?"<null>":this.kind));
         sb.append(',');
-        sb.append("state");
+        sb.append("status");
         sb.append('=');
-        sb.append(((this.state == null)?"<null>":this.state));
+        sb.append(((this.status == null)?"<null>":this.status));
         sb.append(',');
         sb.append("justification");
         sb.append('=');
@@ -252,9 +252,9 @@ public class Suppression {
         result = ((result* 31)+((this.kind == null)? 0 :this.kind.hashCode()));
         result = ((result* 31)+((this.guid == null)? 0 :this.guid.hashCode()));
         result = ((result* 31)+((this.location == null)? 0 :this.location.hashCode()));
-        result = ((result* 31)+((this.state == null)? 0 :this.state.hashCode()));
         result = ((result* 31)+((this.justification == null)? 0 :this.justification.hashCode()));
         result = ((result* 31)+((this.properties == null)? 0 :this.properties.hashCode()));
+        result = ((result* 31)+((this.status == null)? 0 :this.status.hashCode()));
         return result;
     }
 
@@ -267,7 +267,7 @@ public class Suppression {
             return false;
         }
         Suppression rhs = ((Suppression) other);
-        return (((((((this.kind == rhs.kind)||((this.kind!= null)&&this.kind.equals(rhs.kind)))&&((this.guid == rhs.guid)||((this.guid!= null)&&this.guid.equals(rhs.guid))))&&((this.location == rhs.location)||((this.location!= null)&&this.location.equals(rhs.location))))&&((this.state == rhs.state)||((this.state!= null)&&this.state.equals(rhs.state))))&&((this.justification == rhs.justification)||((this.justification!= null)&&this.justification.equals(rhs.justification))))&&((this.properties == rhs.properties)||((this.properties!= null)&&this.properties.equals(rhs.properties))));
+        return (((((((this.kind == rhs.kind)||((this.kind!= null)&&this.kind.equals(rhs.kind)))&&((this.guid == rhs.guid)||((this.guid!= null)&&this.guid.equals(rhs.guid))))&&((this.location == rhs.location)||((this.location!= null)&&this.location.equals(rhs.location))))&&((this.justification == rhs.justification)||((this.justification!= null)&&this.justification.equals(rhs.justification))))&&((this.properties == rhs.properties)||((this.properties!= null)&&this.properties.equals(rhs.properties))))&&((this.status == rhs.status)||((this.status!= null)&&this.status.equals(rhs.status))));
     }
 
 
@@ -316,24 +316,24 @@ public class Suppression {
 
 
     /**
-     * A string that indicates the state of the suppression.
+     * A string that indicates the review status of the suppression.
      * 
      */
-    public enum State {
+    public enum Status {
 
         ACCEPTED("accepted"),
         UNDER_REVIEW("underReview"),
         REJECTED("rejected");
         private final String value;
-        private final static Map<String, Suppression.State> CONSTANTS = new HashMap<String, Suppression.State>();
+        private final static Map<String, Suppression.Status> CONSTANTS = new HashMap<String, Suppression.Status>();
 
         static {
-            for (Suppression.State c: values()) {
+            for (Suppression.Status c: values()) {
                 CONSTANTS.put(c.value, c);
             }
         }
 
-        private State(String value) {
+        private Status(String value) {
             this.value = value;
         }
 
@@ -348,8 +348,8 @@ public class Suppression {
         }
 
         @JsonCreator
-        public static Suppression.State fromValue(String value) {
-            Suppression.State constant = CONSTANTS.get(value);
+        public static Suppression.Status fromValue(String value) {
+            Suppression.Status constant = CONSTANTS.get(value);
             if (constant == null) {
                 throw new IllegalArgumentException(value);
             } else {

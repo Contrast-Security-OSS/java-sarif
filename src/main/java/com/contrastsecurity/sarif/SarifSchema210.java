@@ -18,9 +18,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 
 /**
- * Static Analysis Results Format (SARIF) Version 2.1.0-rtm.4 JSON Schema
+ * Static Analysis Results Format (SARIF) Version 2.1.0 JSON Schema
  * <p>
- * Static Analysis Results Format (SARIF) Version 2.1.0-rtm.4 JSON Schema: a standard format for the output of static analysis tools.
+ * Static Analysis Results Format (SARIF) Version 2.1.0 JSON Schema: a standard format for the output of static analysis tools.
  * 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
     "inlineExternalProperties",
     "properties"
 })
-public class Sarif210Rtm {
+public class SarifSchema210 {
 
     /**
      * The URI of the JSON schema corresponding to the version.
@@ -47,7 +47,7 @@ public class Sarif210Rtm {
      */
     @JsonProperty("version")
     @JsonPropertyDescription("The SARIF format version of this log file.")
-    private Sarif210Rtm.Version version;
+    private SarifSchema210 .Version version;
     /**
      * The set of runs contained in this log file.
      * (Required)
@@ -90,7 +90,7 @@ public class Sarif210Rtm {
         this.$schema = $schema;
     }
 
-    public Sarif210Rtm with$schema(URI $schema) {
+    public SarifSchema210 with$schema(URI $schema) {
         this.$schema = $schema;
         return this;
     }
@@ -101,7 +101,7 @@ public class Sarif210Rtm {
      * 
      */
     @JsonProperty("version")
-    public Sarif210Rtm.Version getVersion() {
+    public SarifSchema210 .Version getVersion() {
         return version;
     }
 
@@ -111,11 +111,11 @@ public class Sarif210Rtm {
      * 
      */
     @JsonProperty("version")
-    public void setVersion(Sarif210Rtm.Version version) {
+    public void setVersion(SarifSchema210 .Version version) {
         this.version = version;
     }
 
-    public Sarif210Rtm withVersion(Sarif210Rtm.Version version) {
+    public SarifSchema210 withVersion(SarifSchema210 .Version version) {
         this.version = version;
         return this;
     }
@@ -140,7 +140,7 @@ public class Sarif210Rtm {
         this.runs = runs;
     }
 
-    public Sarif210Rtm withRuns(List<Run> runs) {
+    public SarifSchema210 withRuns(List<Run> runs) {
         this.runs = runs;
         return this;
     }
@@ -163,7 +163,7 @@ public class Sarif210Rtm {
         this.inlineExternalProperties = inlineExternalProperties;
     }
 
-    public Sarif210Rtm withInlineExternalProperties(Set<ExternalProperties> inlineExternalProperties) {
+    public SarifSchema210 withInlineExternalProperties(Set<ExternalProperties> inlineExternalProperties) {
         this.inlineExternalProperties = inlineExternalProperties;
         return this;
     }
@@ -186,7 +186,7 @@ public class Sarif210Rtm {
         this.properties = properties;
     }
 
-    public Sarif210Rtm withProperties(PropertyBag properties) {
+    public SarifSchema210 withProperties(PropertyBag properties) {
         this.properties = properties;
         return this;
     }
@@ -194,7 +194,7 @@ public class Sarif210Rtm {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Sarif210Rtm.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(SarifSchema210 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("$schema");
         sb.append('=');
         sb.append(((this.$schema == null)?"<null>":this.$schema));
@@ -239,10 +239,10 @@ public class Sarif210Rtm {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Sarif210Rtm) == false) {
+        if ((other instanceof SarifSchema210) == false) {
             return false;
         }
-        Sarif210Rtm rhs = ((Sarif210Rtm) other);
+        SarifSchema210 rhs = ((SarifSchema210) other);
         return ((((((this.inlineExternalProperties == rhs.inlineExternalProperties)||((this.inlineExternalProperties!= null)&&this.inlineExternalProperties.equals(rhs.inlineExternalProperties)))&&((this.$schema == rhs.$schema)||((this.$schema!= null)&&this.$schema.equals(rhs.$schema))))&&((this.version == rhs.version)||((this.version!= null)&&this.version.equals(rhs.version))))&&((this.runs == rhs.runs)||((this.runs!= null)&&this.runs.equals(rhs.runs))))&&((this.properties == rhs.properties)||((this.properties!= null)&&this.properties.equals(rhs.properties))));
     }
 
@@ -255,10 +255,10 @@ public class Sarif210Rtm {
 
         _2_1_0("2.1.0");
         private final String value;
-        private final static Map<String, Sarif210Rtm.Version> CONSTANTS = new HashMap<String, Sarif210Rtm.Version>();
+        private final static Map<String, SarifSchema210 .Version> CONSTANTS = new HashMap<String, SarifSchema210 .Version>();
 
         static {
-            for (Sarif210Rtm.Version c: values()) {
+            for (SarifSchema210 .Version c: values()) {
                 CONSTANTS.put(c.value, c);
             }
         }
@@ -278,8 +278,8 @@ public class Sarif210Rtm {
         }
 
         @JsonCreator
-        public static Sarif210Rtm.Version fromValue(String value) {
-            Sarif210Rtm.Version constant = CONSTANTS.get(value);
+        public static SarifSchema210 .Version fromValue(String value) {
+            SarifSchema210 .Version constant = CONSTANTS.get(value);
             if (constant == null) {
                 throw new IllegalArgumentException(value);
             } else {
