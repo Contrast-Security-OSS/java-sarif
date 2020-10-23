@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.contrastsecurity</groupId>
+  <artifactId>java-sarif</artifactId>
+  <version>2.0-SNAPSHOT</version>
+
+  <organization>
+    <name>Contrast Security</name>
+    <url>contrastsecurity.com</url>
+  </organization>
+
+  <scm>
+    <connection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</connection>
+    <developerConnection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</developerConnection>
+    <url>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</url>
+  </scm>
+
+  <name>SARIF Java</name>
+  <description>POJOs generated from the JSON schema for Static Analysis Results Interchange Format (SARIF)</description>
+  <url>http://www.contrastsecurity.com</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <versions.jackson-core>2.11.3</versions.jackson-core>
+    <versions.jackson-annotations>2.11.1</versions.jackson-annotations>
+    <versions.jackson-databind>2.11.2</versions.jackson-databind>
+
+    <versions.jsonschema2pojo-maven-plugin>1.0.2</versions.jsonschema2pojo-maven-plugin>
+    <versions.maven-clean-plugin>3.1.0</versions.maven-clean-plugin>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${versions.jackson-core}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${versions.jackson-annotations}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${versions.jackson-databind}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin> <!-- Clean old generated sources -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>${versions.maven-clean-plugin}</version>
+        <executions>
+          <execution>
+            <phase>clean</phase>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>
+                    ${project.build.sourceDirectory}
+                  </directory>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
+                  <followSymlinks>false</followSymlinks>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin> <!-- Generate new sources -->
+        <groupId>org.jsonschema2pojo</groupId>
+        <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+        <version>${versions.jsonschema2pojo-maven-plugin}</version>
+        <configuration>
+          <sourceDirectory>${project.basedir}/src/main/resources/schema</sourceDirectory>
+          <targetPackage>com.contrastsecurity.sarif</targetPackage>
+          <generateBuilders>true</generateBuilders>
+          <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
