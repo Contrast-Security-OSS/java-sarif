@@ -6,7 +6,7 @@
 
   <groupId>com.contrastsecurity</groupId>
   <artifactId>java-sarif</artifactId>
-  <version>2.0-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
 
   <organization>
     <name>Contrast Security</name>
@@ -15,13 +15,27 @@
 
   <scm>
     <connection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</connection>
-    <developerConnection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</developerConnection>
+    <developerConnection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git
+    </developerConnection>
     <url>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</url>
   </scm>
 
   <name>SARIF Java</name>
-  <description>POJOs generated from the JSON schema for Static Analysis Results Interchange Format (SARIF)</description>
+  <description>
+    POJOs generated from the JSON schema for Static Analysis Results Interchange Format (SARIF)
+  </description>
   <url>http://www.contrastsecurity.com</url>
+
+  <distributionManagement>
+    <repository>
+      <id>maven-repo</id>
+      <url>https://contrastsecurity.jfrog.io/contrastsecurity/maven-umbrella</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven-repo</id>
+      <url>https://contrastsecurity.jfrog.io/contrastsecurity/maven-umbrella</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <licenses>
     <license>
@@ -67,24 +81,19 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
         <version>${versions.maven-clean-plugin}</version>
-        <executions>
-          <execution>
-            <phase>clean</phase>
-            <configuration>
-              <filesets>
-                <fileset>
-                  <directory>
-                    ${project.build.sourceDirectory}
-                  </directory>
-                  <includes>
-                    <include>**/*</include>
-                  </includes>
-                  <followSymlinks>false</followSymlinks>
-                </fileset>
-              </filesets>
-            </configuration>
-          </execution>
-        </executions>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>
+                ${project.build.sourceDirectory}
+              </directory>
+              <includes>
+                <include>**/*</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
       </plugin>
 
       <plugin> <!-- Generate new sources -->
@@ -99,7 +108,7 @@
         </configuration>
         <executions>
           <execution>
-            <phase>generate-resources</phase>
+            <phase>generate-sources</phase>
             <goals>
               <goal>generate</goal>
             </goals>
