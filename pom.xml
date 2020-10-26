@@ -14,10 +14,10 @@
   </organization>
 
   <scm>
-    <connection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</connection>
-    <developerConnection>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git
+    <connection>scm:git:https://github.com/Contrast-Security-OSS/java-sarif.git</connection>
+    <developerConnection>scm:git:https://github.com/Contrast-Security-OSS/java-sarif.git
     </developerConnection>
-    <url>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</url>
+    <url>scm:git:https://github.com/Contrast-Security-OSS/java-sarif.git</url>
   </scm>
 
   <name>${project.groupId}:${project.artifactId}</name>
