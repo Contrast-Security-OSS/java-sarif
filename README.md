@@ -8,17 +8,15 @@ It uses Jackson for serialising/deserialing from JSON.
 
 ## Usage
 
-<!-- TODO: Release and uncomment
 ### Add as a dependency
 
 ```xml
 <dependency>
-    <groupId>com.contrastsecurity</groupId>
-    <artifactId>java-sarif</artifactId>
-    <version>${java-sarif.version}</version>
+  <groupId>com.contrastsecurity</groupId>
+  <artifactId>java-sarif</artifactId>
+  <version>1.0</version>
 </dependency>
 ```
--->
 
 ### Developing with Java SARIF
 
