@@ -15,10 +15,14 @@ jobs:
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
-          gpg-private-key: ${{ secrets.GPG_SECRET_KEYS | base64 --decode }}
+#          gpg-private-key: ${{ ${{ secrets.GPG_SECRET_KEYS }} | base64 --decode }}
           gpg-passphrase: GPG_PASSPHRASE
       - name: validate
         run: mvn clean test
+      - name: import gpg
+        run: |
+          gpg --version
+          echo ${{secrets.GPG_SECRET_KEYS}} | base64 --decode | gpg --import --no-tty --batch --yes
       - name: build
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
