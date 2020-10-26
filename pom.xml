@@ -20,20 +20,20 @@
     <url>scm:git:git@github.com:Contrast-Security-OSS/java-sarif.git</url>
   </scm>
 
-  <name>SARIF Java</name>
+  <name>${project.groupId}:${project.artifactId}</name>
   <description>
     POJOs generated from the JSON schema for Static Analysis Results Interchange Format (SARIF)
   </description>
-  <url>http://www.contrastsecurity.com</url>
+  <url>https://github.com/Contrast-Security-OSS/java-sarif</url>
 
   <distributionManagement>
     <repository>
-      <id>maven-repo</id>
-      <url>https://contrastsecurity.jfrog.io/contrastsecurity/maven-umbrella</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
     <snapshotRepository>
-      <id>maven-repo</id>
-      <url>https://contrastsecurity.jfrog.io/contrastsecurity/maven-umbrella</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -55,6 +55,12 @@
 
     <versions.jsonschema2pojo-maven-plugin>1.0.2</versions.jsonschema2pojo-maven-plugin>
     <versions.maven-clean-plugin>3.1.0</versions.maven-clean-plugin>
+
+
+
+    <versions.maven-source-plugin>3.0.1</versions.maven-source-plugin>
+    <versions.maven-javadoc-plugin>3.0.0</versions.maven-javadoc-plugin>
+    <versions.maven-gpg-plugin>1.6</versions.maven-gpg-plugin>
   </properties>
 
   <dependencies>
@@ -74,6 +80,64 @@
       <version>${versions.jackson-databind}</version>
     </dependency>
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>${versions.maven-source-plugin}</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>${versions.maven-javadoc-plugin}</version>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>${versions.maven-gpg-plugin}</version>
+            <configuration>
+              <gpgArguments>
+                <arg>--batch</arg>
+                <arg>--yes</arg>
+                <arg>--pinentry-mode</arg>
+                <arg>loopback</arg>
+              </gpgArguments>
+            </configuration>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <build>
     <plugins>

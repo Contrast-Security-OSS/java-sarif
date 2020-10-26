@@ -12,15 +12,20 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
-          server-id: maven-repo
+          server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_SECRET_KEYS | base64 --decode }}
+          gpg-passphrase: GPG_PASSPHRASE
       - name: validate
         run: mvn clean test
       - name: build
-        run: mvn clean install -DskipTests
+        env:
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: mvn clean install -DskipTests -Prelease -X
       - name: deploy
         env:
-          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-        run: mvn deploy
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: mvn deploy -Prelease
