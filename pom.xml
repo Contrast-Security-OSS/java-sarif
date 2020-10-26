@@ -56,11 +56,10 @@
     <versions.jsonschema2pojo-maven-plugin>1.0.2</versions.jsonschema2pojo-maven-plugin>
     <versions.maven-clean-plugin>3.1.0</versions.maven-clean-plugin>
 
-
-
     <versions.maven-source-plugin>3.0.1</versions.maven-source-plugin>
     <versions.maven-javadoc-plugin>3.0.0</versions.maven-javadoc-plugin>
     <versions.maven-gpg-plugin>1.6</versions.maven-gpg-plugin>
+    <versions.nexus-staging-maven-plugin>1.6.8</versions.nexus-staging-maven-plugin>
   </properties>
 
   <dependencies>
@@ -86,6 +85,17 @@
       <id>release</id>
       <build>
         <plugins>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>${versions.nexus-staging-maven-plugin}</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>sonatype-nexus-staging</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
