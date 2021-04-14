@@ -3,7 +3,6 @@ package com.contrastsecurity.sarif;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A location visited by an analysis tool while simulating or monitoring the execution of a program.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "index",
     "location",
@@ -66,7 +65,7 @@ public class ThreadFlowLocation {
     @JsonProperty("kinds")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("A set of distinct strings that categorize the thread flow location. Well-known kinds include 'acquire', 'release', 'enter', 'exit', 'call', 'return', 'branch', 'implicit', 'false', 'true', 'caution', 'danger', 'unknown', 'unreachable', 'taint', 'function', 'handler', 'lock', 'memory', 'resource', 'scope' and 'value'.")
-    private Set<String> kinds = new LinkedHashSet<String>();
+    private Set<String> kinds = null;
     /**
      * An array of references to rule or taxonomy reporting descriptors that are applicable to the thread flow location.
      * 
@@ -74,7 +73,7 @@ public class ThreadFlowLocation {
     @JsonProperty("taxa")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of references to rule or taxonomy reporting descriptors that are applicable to the thread flow location.")
-    private Set<ReportingDescriptorReference> taxa = new LinkedHashSet<ReportingDescriptorReference>();
+    private Set<ReportingDescriptorReference> taxa = null;
     /**
      * The name of the module that contains the code that is executing.
      * 

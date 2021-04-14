@@ -1,9 +1,7 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,7 +15,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * The runtime environment of the analysis tool run.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "commandLine",
     "arguments",
@@ -61,7 +59,7 @@ public class Invocation {
      */
     @JsonProperty("arguments")
     @JsonPropertyDescription("An array of strings, containing in order the command line arguments passed to the tool from the operating system.")
-    private List<String> arguments = new ArrayList<String>();
+    private List<String> arguments = null;
     /**
      * The locations of any response files specified on the tool's command line.
      * 
@@ -69,7 +67,7 @@ public class Invocation {
     @JsonProperty("responseFiles")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The locations of any response files specified on the tool's command line.")
-    private Set<ArtifactLocation> responseFiles = new LinkedHashSet<ArtifactLocation>();
+    private Set<ArtifactLocation> responseFiles = null;
     /**
      * The Coordinated Universal Time (UTC) date and time at which the invocation started. See "Date/time properties" in the SARIF spec for the required format.
      * 
@@ -98,7 +96,7 @@ public class Invocation {
     @JsonProperty("ruleConfigurationOverrides")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of configurationOverride objects that describe rules related runtime overrides.")
-    private Set<ConfigurationOverride> ruleConfigurationOverrides = new LinkedHashSet<ConfigurationOverride>();
+    private Set<ConfigurationOverride> ruleConfigurationOverrides = null;
     /**
      * An array of configurationOverride objects that describe notifications related runtime overrides.
      * 
@@ -106,21 +104,21 @@ public class Invocation {
     @JsonProperty("notificationConfigurationOverrides")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of configurationOverride objects that describe notifications related runtime overrides.")
-    private Set<ConfigurationOverride> notificationConfigurationOverrides = new LinkedHashSet<ConfigurationOverride>();
+    private Set<ConfigurationOverride> notificationConfigurationOverrides = null;
     /**
      * A list of runtime conditions detected by the tool during the analysis.
      * 
      */
     @JsonProperty("toolExecutionNotifications")
     @JsonPropertyDescription("A list of runtime conditions detected by the tool during the analysis.")
-    private List<Notification> toolExecutionNotifications = new ArrayList<Notification>();
+    private List<Notification> toolExecutionNotifications = null;
     /**
      * A list of conditions detected by the tool that are relevant to the tool's configuration.
      * 
      */
     @JsonProperty("toolConfigurationNotifications")
     @JsonPropertyDescription("A list of conditions detected by the tool that are relevant to the tool's configuration.")
-    private List<Notification> toolConfigurationNotifications = new ArrayList<Notification>();
+    private List<Notification> toolConfigurationNotifications = null;
     /**
      * The reason for the process exit.
      * 

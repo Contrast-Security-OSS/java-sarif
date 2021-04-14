@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Represents a node in a graph.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "id",
     "label",
@@ -53,7 +52,7 @@ public class Node {
     @JsonProperty("children")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Array of child nodes.")
-    private Set<Node> children = new LinkedHashSet<Node>();
+    private Set<Node> children = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

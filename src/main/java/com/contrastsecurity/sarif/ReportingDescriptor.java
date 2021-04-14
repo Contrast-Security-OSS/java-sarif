@@ -2,7 +2,6 @@
 package com.contrastsecurity.sarif;
 
 import java.net.URI;
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Metadata that describes a specific report produced by the tool, as part of the analysis it provides or its runtime reporting.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "id",
     "deprecatedIds",
@@ -49,7 +48,7 @@ public class ReportingDescriptor {
     @JsonProperty("deprecatedIds")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of stable, opaque identifiers by which this report was known in some previous version of the analysis tool.")
-    private Set<String> deprecatedIds = new LinkedHashSet<String>();
+    private Set<String> deprecatedIds = null;
     /**
      * A unique identifer for the reporting descriptor in the form of a GUID.
      * 
@@ -64,7 +63,7 @@ public class ReportingDescriptor {
     @JsonProperty("deprecatedGuids")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of unique identifies in the form of a GUID by which this report was known in some previous version of the analysis tool.")
-    private Set<String> deprecatedGuids = new LinkedHashSet<String>();
+    private Set<String> deprecatedGuids = null;
     /**
      * A report identifier that is understandable to an end user.
      * 
@@ -79,7 +78,7 @@ public class ReportingDescriptor {
     @JsonProperty("deprecatedNames")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of readable identifiers by which this report was known in some previous version of the analysis tool.")
-    private Set<String> deprecatedNames = new LinkedHashSet<String>();
+    private Set<String> deprecatedNames = null;
     /**
      * A message string or message format string rendered in multiple formats.
      * 
@@ -129,7 +128,7 @@ public class ReportingDescriptor {
     @JsonProperty("relationships")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of objects that describe relationships between this reporting descriptor and others.")
-    private Set<ReportingDescriptorRelationship> relationships = new LinkedHashSet<ReportingDescriptorRelationship>();
+    private Set<ReportingDescriptorRelationship> relationships = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * An artifact relevant to a result.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "description",
     "artifactLocation",
@@ -46,7 +45,7 @@ public class Attachment {
     @JsonProperty("regions")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of regions of interest within the attachment.")
-    private Set<Region> regions = new LinkedHashSet<Region>();
+    private Set<Region> regions = null;
     /**
      * An array of rectangles specifying areas of interest within the image.
      * 
@@ -54,7 +53,7 @@ public class Attachment {
     @JsonProperty("rectangles")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of rectangles specifying areas of interest within the image.")
-    private Set<Rectangle> rectangles = new LinkedHashSet<Rectangle>();
+    private Set<Rectangle> rectangles = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * A change to a single artifact.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "artifactLocation",
     "replacements",
@@ -36,7 +35,7 @@ public class ArtifactChange {
      */
     @JsonProperty("replacements")
     @JsonPropertyDescription("An array of replacement objects, each of which represents the replacement of a single region in a single artifact specified by 'artifactLocation'.")
-    private List<Replacement> replacements = new ArrayList<Replacement>();
+    private List<Replacement> replacements = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

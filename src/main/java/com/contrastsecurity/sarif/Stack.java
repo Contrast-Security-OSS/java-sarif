@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * A call stack that is relevant to a result.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "message",
     "frames",
@@ -35,7 +34,7 @@ public class Stack {
      */
     @JsonProperty("frames")
     @JsonPropertyDescription("An array of stack frames that represents a sequence of calls, rendered in reverse chronological order, that comprise the call stack.")
-    private List<StackFrame> frames = new ArrayList<StackFrame>();
+    private List<StackFrame> frames = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

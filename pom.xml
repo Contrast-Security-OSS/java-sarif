@@ -68,6 +68,8 @@
     <versions.maven-javadoc-plugin>3.0.0</versions.maven-javadoc-plugin>
     <versions.maven-gpg-plugin>1.6</versions.maven-gpg-plugin>
     <versions.nexus-staging-maven-plugin>1.6.8</versions.nexus-staging-maven-plugin>
+    <versions.junit-jupiter>5.7.1</versions.junit-jupiter>
+    <versions.assertj>3.18.1</versions.assertj>
   </properties>
 
   <dependencies>
@@ -85,6 +87,30 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${versions.jackson-databind}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${versions.junit-jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${versions.junit-jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>${versions.junit-jupiter}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${versions.assertj}</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -187,6 +213,8 @@
           <targetPackage>com.contrastsecurity.sarif</targetPackage>
           <generateBuilders>true</generateBuilders>
           <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+          <inclusionLevel>NON_DEFAULT</inclusionLevel>
+          <initializeCollections>false</initializeCollections>
         </configuration>
         <executions>
           <execution>

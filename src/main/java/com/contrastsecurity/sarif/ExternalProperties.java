@@ -2,9 +2,7 @@
 package com.contrastsecurity.sarif;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,7 +19,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * The top-level element of an external property file.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "schema",
     "version",
@@ -89,7 +87,7 @@ public class ExternalProperties {
     @JsonProperty("graphs")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of graph objects that will be merged with a separate run.")
-    private Set<Graph> graphs = new LinkedHashSet<Graph>();
+    private Set<Graph> graphs = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 
@@ -104,14 +102,14 @@ public class ExternalProperties {
     @JsonProperty("artifacts")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of artifact objects that will be merged with a separate run.")
-    private Set<Artifact> artifacts = new LinkedHashSet<Artifact>();
+    private Set<Artifact> artifacts = null;
     /**
      * Describes the invocation of the analysis tool that will be merged with a separate run.
      * 
      */
     @JsonProperty("invocations")
     @JsonPropertyDescription("Describes the invocation of the analysis tool that will be merged with a separate run.")
-    private List<Invocation> invocations = new ArrayList<Invocation>();
+    private List<Invocation> invocations = null;
     /**
      * An array of logical locations such as namespaces, types or functions that will be merged with a separate run.
      * 
@@ -119,7 +117,7 @@ public class ExternalProperties {
     @JsonProperty("logicalLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of logical locations such as namespaces, types or functions that will be merged with a separate run.")
-    private Set<LogicalLocation> logicalLocations = new LinkedHashSet<LogicalLocation>();
+    private Set<LogicalLocation> logicalLocations = null;
     /**
      * An array of threadFlowLocation objects that will be merged with a separate run.
      * 
@@ -127,14 +125,14 @@ public class ExternalProperties {
     @JsonProperty("threadFlowLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of threadFlowLocation objects that will be merged with a separate run.")
-    private Set<ThreadFlowLocation> threadFlowLocations = new LinkedHashSet<ThreadFlowLocation>();
+    private Set<ThreadFlowLocation> threadFlowLocations = null;
     /**
      * An array of result objects that will be merged with a separate run.
      * 
      */
     @JsonProperty("results")
     @JsonPropertyDescription("An array of result objects that will be merged with a separate run.")
-    private List<Result> results = new ArrayList<Result>();
+    private List<Result> results = null;
     /**
      * Tool taxonomies that will be merged with a separate run.
      * 
@@ -142,7 +140,7 @@ public class ExternalProperties {
     @JsonProperty("taxonomies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Tool taxonomies that will be merged with a separate run.")
-    private Set<ToolComponent> taxonomies = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> taxonomies = null;
     /**
      * A component, such as a plug-in or the driver, of the analysis tool that was run.
      * 
@@ -157,7 +155,7 @@ public class ExternalProperties {
     @JsonProperty("extensions")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Tool extensions that will be merged with a separate run.")
-    private Set<ToolComponent> extensions = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> extensions = null;
     /**
      * Tool policies that will be merged with a separate run.
      * 
@@ -165,7 +163,7 @@ public class ExternalProperties {
     @JsonProperty("policies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Tool policies that will be merged with a separate run.")
-    private Set<ToolComponent> policies = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> policies = null;
     /**
      * Tool translations that will be merged with a separate run.
      * 
@@ -173,14 +171,14 @@ public class ExternalProperties {
     @JsonProperty("translations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Tool translations that will be merged with a separate run.")
-    private Set<ToolComponent> translations = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> translations = null;
     /**
      * Addresses that will be merged with a separate run.
      * 
      */
     @JsonProperty("addresses")
     @JsonPropertyDescription("Addresses that will be merged with a separate run.")
-    private List<Address> addresses = new ArrayList<Address>();
+    private List<Address> addresses = null;
     /**
      * Requests that will be merged with a separate run.
      * 
@@ -188,7 +186,7 @@ public class ExternalProperties {
     @JsonProperty("webRequests")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Requests that will be merged with a separate run.")
-    private Set<WebRequest> webRequests = new LinkedHashSet<WebRequest>();
+    private Set<WebRequest> webRequests = null;
     /**
      * Responses that will be merged with a separate run.
      * 
@@ -196,7 +194,7 @@ public class ExternalProperties {
     @JsonProperty("webResponses")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Responses that will be merged with a separate run.")
-    private Set<WebResponse> webResponses = new LinkedHashSet<WebResponse>();
+    private Set<WebResponse> webResponses = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

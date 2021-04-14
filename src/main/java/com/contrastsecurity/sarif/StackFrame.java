@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * A function call within a stack trace.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "location",
     "module",
@@ -50,7 +49,7 @@ public class StackFrame {
      */
     @JsonProperty("parameters")
     @JsonPropertyDescription("The parameters of the call that is executing.")
-    private List<String> parameters = new ArrayList<String>();
+    private List<String> parameters = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

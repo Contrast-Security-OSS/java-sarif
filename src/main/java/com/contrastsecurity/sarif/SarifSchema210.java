@@ -2,9 +2,7 @@
 package com.contrastsecurity.sarif;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Static Analysis Results Format (SARIF) Version 2.1.0 JSON Schema: a standard format for the output of static analysis tools.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "$schema",
     "version",
@@ -55,7 +53,7 @@ public class SarifSchema210 {
      */
     @JsonProperty("runs")
     @JsonPropertyDescription("The set of runs contained in this log file.")
-    private List<Run> runs = new ArrayList<Run>();
+    private List<Run> runs = null;
     /**
      * References to external property files that share data between runs.
      * 
@@ -63,7 +61,7 @@ public class SarifSchema210 {
     @JsonProperty("inlineExternalProperties")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("References to external property files that share data between runs.")
-    private Set<ExternalProperties> inlineExternalProperties = new LinkedHashSet<ExternalProperties>();
+    private Set<ExternalProperties> inlineExternalProperties = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

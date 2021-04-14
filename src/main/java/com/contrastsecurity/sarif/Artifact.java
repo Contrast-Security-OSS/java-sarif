@@ -2,7 +2,6 @@
 package com.contrastsecurity.sarif;
 
 import java.util.Date;
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A single artifact. In some cases, this artifact might be nested within another artifact.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "description",
     "location",
@@ -75,7 +74,7 @@ public class Artifact {
     @JsonProperty("roles")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The role or roles played by the artifact in the analysis.")
-    private Set<Role> roles = new LinkedHashSet<Role>();
+    private Set<Role> roles = null;
     /**
      * The MIME type (RFC 2045) of the artifact.
      * 

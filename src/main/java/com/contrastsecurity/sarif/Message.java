@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Encapsulates a message intended to be read by the end user.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "text",
     "markdown",
@@ -50,7 +49,7 @@ public class Message {
      */
     @JsonProperty("arguments")
     @JsonPropertyDescription("An array of strings to substitute into the message string.")
-    private List<String> arguments = new ArrayList<String>();
+    private List<String> arguments = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

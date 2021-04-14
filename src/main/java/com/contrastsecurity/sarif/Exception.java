@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Describes a runtime exception encountered during the execution of an analysis tool.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "kind",
     "message",
@@ -50,7 +49,7 @@ public class Exception {
      */
     @JsonProperty("innerExceptions")
     @JsonPropertyDescription("An array of exception objects each of which is considered a cause of this exception.")
-    private List<Exception> innerExceptions = new ArrayList<Exception>();
+    private List<Exception> innerExceptions = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 
