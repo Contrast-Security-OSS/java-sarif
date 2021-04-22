@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -21,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Describes a single run of an analysis tool, and contains the reported output of that run.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "tool",
     "invocations",
@@ -68,7 +67,7 @@ public class Run {
      */
     @JsonProperty("invocations")
     @JsonPropertyDescription("Describes the invocation of the analysis tool.")
-    private List<Invocation> invocations = new ArrayList<Invocation>();
+    private List<Invocation> invocations = null;
     /**
      * Describes how a converter transformed the output of a static analysis tool from the analysis tool's native output format into the SARIF format.
      * 
@@ -90,7 +89,7 @@ public class Run {
     @JsonProperty("versionControlProvenance")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Specifies the revision in version control of the artifacts that were scanned.")
-    private Set<VersionControlDetails> versionControlProvenance = new LinkedHashSet<VersionControlDetails>();
+    private Set<VersionControlDetails> versionControlProvenance = null;
     /**
      * The artifact location specified by each uriBaseId symbol on the machine where the tool originally ran.
      * 
@@ -105,7 +104,7 @@ public class Run {
     @JsonProperty("artifacts")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of artifact objects relevant to the run.")
-    private Set<Artifact> artifacts = new LinkedHashSet<Artifact>();
+    private Set<Artifact> artifacts = null;
     /**
      * An array of logical locations such as namespaces, types or functions.
      * 
@@ -113,7 +112,7 @@ public class Run {
     @JsonProperty("logicalLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of logical locations such as namespaces, types or functions.")
-    private Set<LogicalLocation> logicalLocations = new LinkedHashSet<LogicalLocation>();
+    private Set<LogicalLocation> logicalLocations = null;
     /**
      * An array of zero or more unique graph objects associated with the run.
      * 
@@ -121,14 +120,14 @@ public class Run {
     @JsonProperty("graphs")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of zero or more unique graph objects associated with the run.")
-    private Set<Graph> graphs = new LinkedHashSet<Graph>();
+    private Set<Graph> graphs = null;
     /**
      * The set of results contained in an SARIF log. The results array can be omitted when a run is solely exporting rules metadata. It must be present (but may be empty) if a log file represents an actual scan.
      * 
      */
     @JsonProperty("results")
     @JsonPropertyDescription("The set of results contained in an SARIF log. The results array can be omitted when a run is solely exporting rules metadata. It must be present (but may be empty) if a log file represents an actual scan.")
-    private List<Result> results = new ArrayList<Result>();
+    private List<Result> results = null;
     /**
      * Information that describes a run's identity and role within an engineering system process.
      * 
@@ -143,7 +142,7 @@ public class Run {
     @JsonProperty("runAggregates")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Automation details that describe the aggregate of runs to which this run belongs.")
-    private Set<RunAutomationDetails> runAggregates = new LinkedHashSet<RunAutomationDetails>();
+    private Set<RunAutomationDetails> runAggregates = null;
     /**
      * The 'guid' property of a previous SARIF 'run' that comprises the baseline that was used to compute result 'baselineState' properties for the run.
      * 
@@ -158,7 +157,7 @@ public class Run {
     @JsonProperty("redactionTokens")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of strings used to replace sensitive information in a redaction-aware property.")
-    private Set<String> redactionTokens = new LinkedHashSet<String>();
+    private Set<String> redactionTokens = null;
     /**
      * Specifies the default encoding for any artifact object that refers to a text file.
      * 
@@ -202,7 +201,7 @@ public class Run {
     @JsonProperty("threadFlowLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of threadFlowLocation objects cached at run level.")
-    private Set<ThreadFlowLocation> threadFlowLocations = new LinkedHashSet<ThreadFlowLocation>();
+    private Set<ThreadFlowLocation> threadFlowLocations = null;
     /**
      * An array of toolComponent objects relevant to a taxonomy in which results are categorized.
      * 
@@ -210,14 +209,14 @@ public class Run {
     @JsonProperty("taxonomies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of toolComponent objects relevant to a taxonomy in which results are categorized.")
-    private Set<ToolComponent> taxonomies = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> taxonomies = null;
     /**
      * Addresses associated with this run instance, if any.
      * 
      */
     @JsonProperty("addresses")
     @JsonPropertyDescription("Addresses associated with this run instance, if any.")
-    private List<Address> addresses = new ArrayList<Address>();
+    private List<Address> addresses = null;
     /**
      * The set of available translations of the localized data provided by the tool.
      * 
@@ -225,7 +224,7 @@ public class Run {
     @JsonProperty("translations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The set of available translations of the localized data provided by the tool.")
-    private Set<ToolComponent> translations = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> translations = null;
     /**
      * Contains configurations that may potentially override both reportingDescriptor.defaultConfiguration (the tool's default severities) and invocation.configurationOverrides (severities established at run-time from the command line).
      * 
@@ -233,7 +232,7 @@ public class Run {
     @JsonProperty("policies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Contains configurations that may potentially override both reportingDescriptor.defaultConfiguration (the tool's default severities) and invocation.configurationOverrides (severities established at run-time from the command line).")
-    private Set<ToolComponent> policies = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> policies = null;
     /**
      * An array of request objects cached at run level.
      * 
@@ -241,7 +240,7 @@ public class Run {
     @JsonProperty("webRequests")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of request objects cached at run level.")
-    private Set<WebRequest> webRequests = new LinkedHashSet<WebRequest>();
+    private Set<WebRequest> webRequests = null;
     /**
      * An array of response objects cached at run level.
      * 
@@ -249,7 +248,7 @@ public class Run {
     @JsonProperty("webResponses")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of response objects cached at run level.")
-    private Set<WebResponse> webResponses = new LinkedHashSet<WebResponse>();
+    private Set<WebResponse> webResponses = null;
     /**
      * Defines locations of special significance to SARIF consumers.
      * 

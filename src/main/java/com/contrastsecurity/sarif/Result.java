@@ -2,9 +2,7 @@
 package com.contrastsecurity.sarif;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,7 +19,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A result produced by an analysis tool.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "ruleId",
     "ruleIndex",
@@ -112,7 +110,7 @@ public class Result {
      */
     @JsonProperty("locations")
     @JsonPropertyDescription("The set of locations where the result was detected. Specify only one location unless the problem indicated by the result can only be corrected by making a change at every specified location.")
-    private List<Location> locations = new ArrayList<Location>();
+    private List<Location> locations = null;
     /**
      * A stable, unique identifer for the result in the form of a GUID.
      * 
@@ -155,14 +153,14 @@ public class Result {
     @JsonProperty("stacks")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of 'stack' objects relevant to the result.")
-    private Set<Stack> stacks = new LinkedHashSet<Stack>();
+    private Set<Stack> stacks = null;
     /**
      * An array of 'codeFlow' objects relevant to the result.
      * 
      */
     @JsonProperty("codeFlows")
     @JsonPropertyDescription("An array of 'codeFlow' objects relevant to the result.")
-    private List<CodeFlow> codeFlows = new ArrayList<CodeFlow>();
+    private List<CodeFlow> codeFlows = null;
     /**
      * An array of zero or more unique graph objects associated with the result.
      * 
@@ -170,7 +168,7 @@ public class Result {
     @JsonProperty("graphs")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of zero or more unique graph objects associated with the result.")
-    private Set<Graph> graphs = new LinkedHashSet<Graph>();
+    private Set<Graph> graphs = null;
     /**
      * An array of one or more unique 'graphTraversal' objects.
      * 
@@ -178,7 +176,7 @@ public class Result {
     @JsonProperty("graphTraversals")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of one or more unique 'graphTraversal' objects.")
-    private Set<GraphTraversal> graphTraversals = new LinkedHashSet<GraphTraversal>();
+    private Set<GraphTraversal> graphTraversals = null;
     /**
      * A set of locations relevant to this result.
      * 
@@ -186,7 +184,7 @@ public class Result {
     @JsonProperty("relatedLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("A set of locations relevant to this result.")
-    private Set<Location> relatedLocations = new LinkedHashSet<Location>();
+    private Set<Location> relatedLocations = null;
     /**
      * A set of suppressions relevant to this result.
      * 
@@ -194,7 +192,7 @@ public class Result {
     @JsonProperty("suppressions")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("A set of suppressions relevant to this result.")
-    private Set<Suppression> suppressions = new LinkedHashSet<Suppression>();
+    private Set<Suppression> suppressions = null;
     /**
      * The state of a result relative to a baseline of a previous run.
      * 
@@ -216,7 +214,7 @@ public class Result {
     @JsonProperty("attachments")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("A set of artifacts relevant to the result.")
-    private Set<Attachment> attachments = new LinkedHashSet<Attachment>();
+    private Set<Attachment> attachments = null;
     /**
      * An absolute URI at which the result can be viewed.
      * 
@@ -231,7 +229,7 @@ public class Result {
     @JsonProperty("workItemUris")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The URIs of the work items associated with this result.")
-    private Set<URI> workItemUris = new LinkedHashSet<URI>();
+    private Set<URI> workItemUris = null;
     /**
      * Contains information about how and when a result was detected.
      * 
@@ -246,7 +244,7 @@ public class Result {
     @JsonProperty("fixes")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of 'fix' objects, each of which represents a proposed fix to the problem indicated by the result.")
-    private Set<Fix> fixes = new LinkedHashSet<Fix>();
+    private Set<Fix> fixes = null;
     /**
      * An array of references to taxonomy reporting descriptors that are applicable to the result.
      * 
@@ -254,7 +252,7 @@ public class Result {
     @JsonProperty("taxa")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of references to taxonomy reporting descriptors that are applicable to the result.")
-    private Set<ReportingDescriptorReference> taxa = new LinkedHashSet<ReportingDescriptorReference>();
+    private Set<ReportingDescriptorReference> taxa = null;
     /**
      * Describes an HTTP request.
      * 

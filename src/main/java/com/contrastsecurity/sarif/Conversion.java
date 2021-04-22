@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Describes how a converter transformed the output of a static analysis tool from the analysis tool's native output format into the SARIF format.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "tool",
     "invocation",
@@ -45,7 +44,7 @@ public class Conversion {
     @JsonProperty("analysisToolLogFiles")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The locations of the analysis tool's per-run log files.")
-    private Set<ArtifactLocation> analysisToolLogFiles = new LinkedHashSet<ArtifactLocation>();
+    private Set<ArtifactLocation> analysisToolLogFiles = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

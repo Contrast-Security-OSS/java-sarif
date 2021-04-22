@@ -14,7 +14,7 @@ It uses Jackson for serialising/deserialing from JSON.
 <dependency>
   <groupId>com.contrastsecurity</groupId>
   <artifactId>java-sarif</artifactId>
-  <version>1.0</version>
+  <version>2.0</version>
 </dependency>
 ```
 
@@ -39,14 +39,14 @@ Public Getters & Setters are provided.
 
 #### Jackson
 
-Classes are decorated with `@JsonInclude(JsonInclude.Include.NON_NULL)` and `@JsonPropertyOrder`
+Classes are decorated with `@JsonInclude(JsonInclude.Include.NON_DEFAULT)` and `@JsonPropertyOrder`
 which dictates the order from the JSON schema.
 
 ```java
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 // ...
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "text",
     "markdown",

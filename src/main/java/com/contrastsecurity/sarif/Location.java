@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A location within a programming artifact.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "id",
     "physicalLocation",
@@ -47,7 +46,7 @@ public class Location {
     @JsonProperty("logicalLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The logical locations associated with the result.")
-    private Set<LogicalLocation> logicalLocations = new LinkedHashSet<LogicalLocation>();
+    private Set<LogicalLocation> logicalLocations = null;
     /**
      * Encapsulates a message intended to be read by the end user.
      * 
@@ -62,7 +61,7 @@ public class Location {
     @JsonProperty("annotations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("A set of regions relevant to the location.")
-    private Set<Region> annotations = new LinkedHashSet<Region>();
+    private Set<Region> annotations = null;
     /**
      * An array of objects that describe relationships between this location and others.
      * 
@@ -70,7 +69,7 @@ public class Location {
     @JsonProperty("relationships")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of objects that describe relationships between this location and others.")
-    private Set<LocationRelationship> relationships = new LinkedHashSet<LocationRelationship>();
+    private Set<LocationRelationship> relationships = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

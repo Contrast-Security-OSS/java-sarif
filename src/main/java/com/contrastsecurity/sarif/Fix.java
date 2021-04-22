@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A proposed fix for the problem represented by a result object. A fix specifies a set of artifacts to modify. For each artifact, it specifies a set of bytes to remove, and provides a set of new bytes to replace them.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "description",
     "artifactChanges",
@@ -37,7 +36,7 @@ public class Fix {
     @JsonProperty("artifactChanges")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("One or more artifact changes that comprise a fix for a result.")
-    private Set<ArtifactChange> artifactChanges = new LinkedHashSet<ArtifactChange>();
+    private Set<ArtifactChange> artifactChanges = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * Describes a sequence of code locations that specify a path through a single thread of execution such as an operating system or fiber.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "id",
     "message",
@@ -59,7 +58,7 @@ public class ThreadFlow {
      */
     @JsonProperty("locations")
     @JsonPropertyDescription("A temporally ordered array of 'threadFlowLocation' objects, each of which describes a location visited by the tool while producing the result.")
-    private List<ThreadFlowLocation> locations = new ArrayList<ThreadFlowLocation>();
+    private List<ThreadFlowLocation> locations = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

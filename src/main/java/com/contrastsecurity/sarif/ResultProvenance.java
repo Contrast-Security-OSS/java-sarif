@@ -2,7 +2,6 @@
 package com.contrastsecurity.sarif;
 
 import java.util.Date;
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Contains information about how and when a result was detected.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "firstDetectionTimeUtc",
     "lastDetectionTimeUtc",
@@ -69,7 +68,7 @@ public class ResultProvenance {
     @JsonProperty("conversionSources")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of physicalLocation objects which specify the portions of an analysis tool's output that a converter transformed into the result.")
-    private Set<PhysicalLocation> conversionSources = new LinkedHashSet<PhysicalLocation>();
+    private Set<PhysicalLocation> conversionSources = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

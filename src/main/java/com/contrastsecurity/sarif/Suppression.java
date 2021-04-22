@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * A suppression that is relevant to a result.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "guid",
     "kind",

@@ -2,7 +2,6 @@
 package com.contrastsecurity.sarif;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -18,7 +17,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A component, such as a plug-in or the driver, of the analysis tool that was run.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "guid",
     "name",
@@ -164,7 +163,7 @@ public class ToolComponent {
     @JsonProperty("notifications")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of reportingDescriptor objects relevant to the notifications related to the configuration and runtime execution of the tool component.")
-    private Set<ReportingDescriptor> notifications = new LinkedHashSet<ReportingDescriptor>();
+    private Set<ReportingDescriptor> notifications = null;
     /**
      * An array of reportingDescriptor objects relevant to the analysis performed by the tool component.
      * 
@@ -172,7 +171,7 @@ public class ToolComponent {
     @JsonProperty("rules")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of reportingDescriptor objects relevant to the analysis performed by the tool component.")
-    private Set<ReportingDescriptor> rules = new LinkedHashSet<ReportingDescriptor>();
+    private Set<ReportingDescriptor> rules = null;
     /**
      * An array of reportingDescriptor objects relevant to the definitions of both standalone and tool-defined taxonomies.
      * 
@@ -180,14 +179,14 @@ public class ToolComponent {
     @JsonProperty("taxa")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of reportingDescriptor objects relevant to the definitions of both standalone and tool-defined taxonomies.")
-    private Set<ReportingDescriptor> taxa = new LinkedHashSet<ReportingDescriptor>();
+    private Set<ReportingDescriptor> taxa = null;
     /**
      * An array of the artifactLocation objects associated with the tool component.
      * 
      */
     @JsonProperty("locations")
     @JsonPropertyDescription("An array of the artifactLocation objects associated with the tool component.")
-    private List<ArtifactLocation> locations = new ArrayList<ArtifactLocation>();
+    private List<ArtifactLocation> locations = null;
     /**
      * The language of the messages emitted into the log file during this run (expressed as an ISO 639-1 two-letter lowercase language code) and an optional region (expressed as an ISO 3166-1 two-letter uppercase subculture code associated with a country or region). The casing is recommended but not required (in order for this data to conform to RFC5646).
      * 
@@ -245,7 +244,7 @@ public class ToolComponent {
     @JsonProperty("supportedTaxonomies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of toolComponentReference objects to declare the taxonomies supported by the tool component.")
-    private Set<ToolComponentReference> supportedTaxonomies = new LinkedHashSet<ToolComponentReference>();
+    private Set<ToolComponentReference> supportedTaxonomies = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

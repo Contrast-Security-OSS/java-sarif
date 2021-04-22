@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Information about a rule or notification that can be configured at runtime.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "enabled",
     "level",

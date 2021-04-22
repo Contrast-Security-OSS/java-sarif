@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * The analysis tool that was run.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "driver",
     "extensions",
@@ -37,7 +36,7 @@ public class Tool {
     @JsonProperty("extensions")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("Tool extensions that contributed to or reconfigured the analysis tool that was run.")
-    private Set<ToolComponent> extensions = new LinkedHashSet<ToolComponent>();
+    private Set<ToolComponent> extensions = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

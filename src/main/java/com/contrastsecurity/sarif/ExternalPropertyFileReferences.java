@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * References to external property files that should be inlined with the content of a root log file.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "conversion",
     "graphs",
@@ -50,7 +49,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("graphs")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing a run.graphs object to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> graphs = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> graphs = null;
     /**
      * Contains information that enables a SARIF consumer to locate the external property file that contains the value of an externalized property associated with the run.
      * 
@@ -65,7 +64,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("artifacts")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.artifacts arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> artifacts = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> artifacts = null;
     /**
      * An array of external property files containing run.invocations arrays to be merged with the root log file.
      * 
@@ -73,7 +72,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("invocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.invocations arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> invocations = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> invocations = null;
     /**
      * An array of external property files containing run.logicalLocations arrays to be merged with the root log file.
      * 
@@ -81,7 +80,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("logicalLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.logicalLocations arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> logicalLocations = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> logicalLocations = null;
     /**
      * An array of external property files containing run.threadFlowLocations arrays to be merged with the root log file.
      * 
@@ -89,7 +88,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("threadFlowLocations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.threadFlowLocations arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> threadFlowLocations = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> threadFlowLocations = null;
     /**
      * An array of external property files containing run.results arrays to be merged with the root log file.
      * 
@@ -97,7 +96,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("results")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.results arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> results = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> results = null;
     /**
      * An array of external property files containing run.taxonomies arrays to be merged with the root log file.
      * 
@@ -105,7 +104,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("taxonomies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.taxonomies arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> taxonomies = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> taxonomies = null;
     /**
      * An array of external property files containing run.addresses arrays to be merged with the root log file.
      * 
@@ -113,7 +112,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("addresses")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.addresses arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> addresses = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> addresses = null;
     /**
      * Contains information that enables a SARIF consumer to locate the external property file that contains the value of an externalized property associated with the run.
      * 
@@ -128,7 +127,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("extensions")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.extensions arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> extensions = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> extensions = null;
     /**
      * An array of external property files containing run.policies arrays to be merged with the root log file.
      * 
@@ -136,7 +135,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("policies")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.policies arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> policies = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> policies = null;
     /**
      * An array of external property files containing run.translations arrays to be merged with the root log file.
      * 
@@ -144,7 +143,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("translations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.translations arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> translations = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> translations = null;
     /**
      * An array of external property files containing run.requests arrays to be merged with the root log file.
      * 
@@ -152,7 +151,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("webRequests")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.requests arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> webRequests = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> webRequests = null;
     /**
      * An array of external property files containing run.responses arrays to be merged with the root log file.
      * 
@@ -160,7 +159,7 @@ public class ExternalPropertyFileReferences {
     @JsonProperty("webResponses")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of external property files containing run.responses arrays to be merged with the root log file.")
-    private Set<ExternalPropertyFileReference> webResponses = new LinkedHashSet<ExternalPropertyFileReference>();
+    private Set<ExternalPropertyFileReference> webResponses = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

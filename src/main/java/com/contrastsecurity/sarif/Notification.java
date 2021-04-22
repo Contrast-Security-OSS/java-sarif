@@ -3,7 +3,6 @@ package com.contrastsecurity.sarif;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Describes a condition relevant to the tool itself, as opposed to being relevant to a target being analyzed by the tool.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "locations",
     "message",
@@ -40,7 +39,7 @@ public class Notification {
     @JsonProperty("locations")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("The locations relevant to this notification.")
-    private Set<Location> locations = new LinkedHashSet<Location>();
+    private Set<Location> locations = null;
     /**
      * Encapsulates a message intended to be read by the end user.
      * (Required)

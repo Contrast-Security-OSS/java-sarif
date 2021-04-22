@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * A set of threadFlows which together describe a pattern of code execution relevant to detecting a result.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "message",
     "threadFlows",
@@ -35,7 +34,7 @@ public class CodeFlow {
      */
     @JsonProperty("threadFlows")
     @JsonPropertyDescription("An array of one or more unique threadFlow objects, each of which describes the progress of a program through a thread of execution.")
-    private List<ThreadFlow> threadFlows = new ArrayList<ThreadFlow>();
+    private List<ThreadFlow> threadFlows = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

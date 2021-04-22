@@ -1,7 +1,6 @@
 
 package com.contrastsecurity.sarif;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * A network of nodes and directed edges that describes some aspect of the structure of the code (for example, a call graph).
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "description",
     "nodes",
@@ -37,7 +36,7 @@ public class Graph {
     @JsonProperty("nodes")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of node objects representing the nodes of the graph.")
-    private Set<Node> nodes = new LinkedHashSet<Node>();
+    private Set<Node> nodes = null;
     /**
      * An array of edge objects representing the edges of the graph.
      * 
@@ -45,7 +44,7 @@ public class Graph {
     @JsonProperty("edges")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("An array of edge objects representing the edges of the graph.")
-    private Set<Edge> edges = new LinkedHashSet<Edge>();
+    private Set<Edge> edges = null;
     /**
      * Key/value pairs that provide additional information about the object.
      * 

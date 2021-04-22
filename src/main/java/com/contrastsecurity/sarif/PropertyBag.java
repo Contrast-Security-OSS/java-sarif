@@ -2,7 +2,6 @@
 package com.contrastsecurity.sarif;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * Key/value pairs that provide additional information about the object.
  * 
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @JsonPropertyOrder({
     "tags"
 })
@@ -32,7 +31,7 @@ public class PropertyBag {
     @JsonProperty("tags")
     @JsonDeserialize(as = java.util.LinkedHashSet.class)
     @JsonPropertyDescription("A set of distinct strings that provide additional information.")
-    private Set<String> tags = new LinkedHashSet<String>();
+    private Set<String> tags = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
