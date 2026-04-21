@@ -59,7 +59,7 @@
 
     <versions.jackson-core>2.11.3</versions.jackson-core>
     <versions.jackson-annotations>2.11.1</versions.jackson-annotations>
-    <versions.jackson-databind>2.11.2</versions.jackson-databind>
+    <versions.jackson-databind>2.12.7.1</versions.jackson-databind>
 
     <versions.jsonschema2pojo-maven-plugin>1.0.2</versions.jsonschema2pojo-maven-plugin>
     <versions.maven-clean-plugin>3.1.0</versions.maven-clean-plugin>
